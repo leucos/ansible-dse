@@ -1,0 +1,17 @@
+- include: check-vars.yml
+  tags:
+    - dse
+    - dse:opscenter
+
+- include: dse.yml
+  when: dse_install_dse is defined and dse_install_dse != False
+  tags:
+    - dse
+
+- include: dse-opscenter.yml
+  when: dse_install_opscenter is defined and dse_install_opscenter != False
+  tags:
+    - dse
+    - dse:opscenter
+
+

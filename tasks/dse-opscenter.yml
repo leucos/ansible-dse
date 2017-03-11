@@ -1,0 +1,4 @@
+- name: Installs Opscenter
+  apt:
+    name: opscenter
+    state: present

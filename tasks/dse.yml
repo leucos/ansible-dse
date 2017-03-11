@@ -1,0 +1,54 @@
+- name: Adds datastax repos key
+  apt_key:
+    url: https://debian.datastax.com/debian/repo_key
+
+- name: Adds datastax repos
+  apt_repository:
+    repo: "deb https://{{ dse_repository_login }}:{{ dse_repository_password }}@debian.datastax.com/enterprise stable main"
+    update_cache: yes
+
+- name: Installs DSE
+  apt:
+    name: dse-full
+    state: present
+  notify:
+    - Restart DSE
+
+- name: Adds cassandra.yml
+  template:
+    src: cassandra.yml.j2
+    dest: /etc/dse/cassandra/cassandra.yaml
+    owner: cassandra
+    group: cassandra
+    mode: 0644
+  notify:
+    - Restart DSE
+
+- name: Adds cassandra-env.sh
+  template:
+    src: cassandra-env.sh.j2
+    dest: /etc/dse/cassandra/cassandra-env.sh
+    owner: cassandra
+    group: cassandra
+    mode: 0644
+  notify:
+    - Restart DSE
+
+- name: Installs agent
+  apt:
+    name: datastax-agent
+    state: present
+  when: dse_opscenter_ip is defined and dse_opscenter_ip != False
+  notify:
+    - Restart DSE agent
+
+- name: Configures agent
+  template:
+    src: address.yaml.j2
+    dest: /var/lib/datastax-agent/conf/address.yaml
+    owner: cassandra
+    group: cassandra
+    mode: 0644
+  when: dse_opscenter_ip is defined and dse_opscenter_ip != False
+  notify:
+    - Restart DSE agent

@@ -1,0 +1,5 @@
+dse_repository_login: changeme
+dse_repository_password: changeme
+dse_install_dse: True
+dse_install_opscenter: True
+dse_opscenter_ip: 127.0.0.1

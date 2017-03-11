@@ -1,0 +1,7 @@
+- name: Checks if required vars are set
+  fail:
+    msg: "Sorry, {{ item }} must be set"
+  when: "{{ item }} is not defined or {{ item }} == False"
+  with_items:
+    - dse_repository_login
+    - dse_repository_password

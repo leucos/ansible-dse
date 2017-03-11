@@ -1,0 +1,10 @@
+- name: Restart DSE
+  service:
+    name: dse
+    state: restarted
+
+- name: Restart DSE agent
+  service:
+    name: datastax-agent
+    state: restarted
+  
