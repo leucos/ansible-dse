@@ -7,4 +7,8 @@
   service:
     name: datastax-agent
     state: restarted
-  
+
+- name: Restart Opscenter
+  service:
+    name: opscenterd
+    state: restarted

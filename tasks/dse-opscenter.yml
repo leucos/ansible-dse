@@ -2,3 +2,5 @@
   apt:
     name: opscenter
     state: present
+  notify:
+    - Restart Opscenter
