@@ -34,4 +34,4 @@ Note the VM is set to eat 4GB RAM.
 Licence
 -------
 
-WTFPL
+MIT
