@@ -10,3 +10,8 @@
   fail:
     msg: "You can not define both dse_listen_address and dse_listen_interface"
   when: dse_listen_address != False and dse_listen_interface != False
+
+- name: Checks art least dse_listen_address or dse_listen_interface is defined
+  fail:
+    msg: "You have to define one (and only one) of dse_listen_address and dse_listen_interface"
+  when: dse_listen_address == False and dse_listen_interface == False

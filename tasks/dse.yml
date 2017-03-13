@@ -16,7 +16,7 @@
 
 - name: Adds cassandra.yaml
   template:
-    src: cassandra.yml.j2
+    src: cassandra.yaml.j2
     dest: /etc/dse/cassandra/cassandra.yaml
     owner: cassandra
     group: cassandra

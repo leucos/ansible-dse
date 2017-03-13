@@ -1,6 +1,6 @@
 dse_cluster_name: "please set dse_cluster_name"
 dse_install_opscenter: False
 dse_install_dse: False
-dse_listen_address: localhost
+dse_listen_address: False
 dse_listen_interface: False
 dse_opscenter_ip: False
