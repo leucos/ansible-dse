@@ -344,7 +344,6 @@ commitlog_segment_size_in_mb: 32
 #   - class_name: LZ4Compressor
 #     parameters:
 #    
-     -
 {% set __dse_cluster_members = [] -%}
 
 {% if dse_listen_interface %}
@@ -368,7 +367,7 @@ seed_provider:
       parameters:
           # seeds is actually a comma-delimited list of addresses.
           # Ex: "<ip1>,<ip2>,<ip3>"
-          - seeds: {{ ",".join(__dse_cluster_members) }}
+          - seeds: "{{ ",".join(__dse_cluster_members) }}"
 
 # For workloads with more data than can fit in memory, Cassandra's
 # bottleneck will be reads that need to fetch data from
