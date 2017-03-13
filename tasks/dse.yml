@@ -14,7 +14,7 @@
   notify:
     - Restart DSE
 
-- name: Adds cassandra.yml
+- name: Adds cassandra.yaml
   template:
     src: cassandra.yml.j2
     dest: /etc/dse/cassandra/cassandra.yaml

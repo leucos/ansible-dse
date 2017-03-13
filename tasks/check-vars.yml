@@ -5,3 +5,8 @@
   with_items:
     - dse_repository_login
     - dse_repository_password
+
+- name: Checks that dse_listen_address & dse_listen_interface and not both defined
+  fail:
+    msg: "You can not define both dse_listen_address and dse_listen_interface"
+  when: dse_listen_address != False and dse_listen_interface != False
