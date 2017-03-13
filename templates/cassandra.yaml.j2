@@ -584,7 +584,7 @@ start_rpc: true
 
 {% if dse_rpc_address %}
 rpc_address: {{ dse_rpc_address }}
-{% else if dse_rpc_interface %}
+{% elif dse_rpc_interface %}
 rpc_interface: {{ dse_rpc_interface }}
 {% endif %}
 
