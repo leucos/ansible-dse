@@ -490,7 +490,7 @@ ssl_storage_port: 7001
 # listen_interface: eth0
 # listen_interface_prefer_ipv6: false
 
-{% if listen_address %}
+{% if dse_listen_address %}
 listen_address: {{ dse_listen_address }}
 {% else %}
 listen_interface: {{ dse_listen_interface }}
