@@ -4,6 +4,7 @@ dse_install_opscenter: False
 dse_install_dse: False
 dse_listen_address: False
 dse_listen_interface: False
+dse_num_tokens: 128
 dse_opscenter_ip: False
 dse_rpc_address: False
 dse_rpc_interface: False
