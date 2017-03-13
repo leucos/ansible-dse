@@ -7,12 +7,17 @@
     - dse_repository_password
     - dse_group
 
-- name: Checks that dse_listen_address & dse_listen_interface and not both defined
+- name: Checks that dse_listen_address & dse_listen_interface are not both defined
   fail:
     msg: "You can not define both dse_listen_address and dse_listen_interface"
   when: dse_listen_address != False and dse_listen_interface != False
 
-- name: Checks art least dse_listen_address or dse_listen_interface is defined
+- name: Checks that at least dse_listen_address or dse_listen_interface is defined
   fail:
     msg: "You have to define one (and only one) of dse_listen_address and dse_listen_interface"
   when: dse_listen_address == False and dse_listen_interface == False
+
+  - name: Checks that dse_rpc_address & dse_rpc_interface are not both defined
+  fail:
+    msg: "You can not define both dse_rpc_address and dse_rpc_interface"
+  when: dse_rpc_address != False and dse_rpc_interface != False
