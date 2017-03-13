@@ -343,7 +343,19 @@ commitlog_segment_size_in_mb: 32
 #commitlog_compression:
 #   - class_name: LZ4Compressor
 #     parameters:
-#         -
+#    
+     -
+{% set __dse_cluster_members = [] -%}
+
+{% if dse_listen_interface %}
+{%-   for node in groups[dse_group] %}
+{%-     set _ = __dse_cluster_members.append(hostvars[node]['ansible_' + dse_listen_interface].ipv4.address) -%}
+{%    endfor %}
+{% else %}
+{%-   for node in groups[dse_group] %}
+{%-     set _ = __dse_cluster_members.append(dse_listen_address) -%}
+{%    endfor %}
+{% endif %}
 
 # any class that implements the SeedProvider interface and has a
 # constructor that takes a Map<String, String> of parameters will do.
@@ -356,7 +368,7 @@ seed_provider:
       parameters:
           # seeds is actually a comma-delimited list of addresses.
           # Ex: "<ip1>,<ip2>,<ip3>"
-          - seeds: "127.0.0.1"
+          - seeds: {{ ",".join(__dsecluster_members) }}
 
 # For workloads with more data than can fit in memory, Cassandra's
 # bottleneck will be reads that need to fetch data from
