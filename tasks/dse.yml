@@ -21,6 +21,7 @@
     owner: cassandra
     group: cassandra
     mode: 0644
+  tags: ["config","dse:config"]
   notify:
     - Restart DSE
 
@@ -31,6 +32,7 @@
     owner: cassandra
     group: cassandra
     mode: 0644
+  tags: ["config","dse:config"]
   notify:
     - Restart DSE
 
@@ -50,6 +52,7 @@
     group: cassandra
     mode: 0644
   when: dse_opscenter_ip is defined and dse_opscenter_ip != False
+  tags: ["config","dse-agents:config"]
   notify:
     - Restart DSE agent
 
@@ -61,6 +64,7 @@
     group: root
     mode: 0644
   when: dse_opscenter_ip is defined and dse_opscenter_ip != False
+  tags: ["config","dse-agents:config"]
   notify:
     - Restart DSE agent
 
