@@ -39,7 +39,7 @@ num_tokens: {{ dse_num_tokens }}
 # vnodes (num_tokens > 1, above) -- in which case you should provide a 
 # comma-separated list -- it's primarily used when adding nodes # to legacy clusters 
 # that do not have vnodes enabled.
-{% if ds_initial_token|count > 0 %}
+{% if dse_initial_token|count > 0 %}
 initial_token: {{ ds_initial_token|join(',') }}
 {% endif %}
 
