@@ -136,7 +136,7 @@ authorizer: AllowAllAuthorizer
 # - DseRoleManager stores role options in the dse_security keyspace. Please
 #   increase the dse_security keyspace replication factor if you use this role 
 #   manager. Additional configuration is required in dse.yaml
-role_manager: com.datastax.bdp.cassandra.auth.DseRoleManager
+role_manager: {{ dse_role_manager  }}
 
 # Validity period for roles cache (fetching permissions can be an
 # expensive operation depending on the authorizer). Granted roles are cached for
