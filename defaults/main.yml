@@ -1,10 +1,35 @@
+# Cluster setup
 dse_cluster_name: "please set dse_cluster_name"
-dse_group: False
+## Ansible group for cluster
+dse_seed_group: False
+dse_num_tokens: 128
+dse_initial_token: []
+
+# AAA
+dse_authenticator: AllowAllAuthenticator
+dse_authorize: AllowAllAuthorizer
+dse_role_manager: com.datastax.bdp.cassandra.auth.DseRoleManager
+
+# Locations
+dse_home: /var/lib/cassandra/
+dse_commitlog_directory: "{{ dse_home }}/commitlog"
+dse_saved_caches_directory: "{{ dse_home }}/saved_caches"
+dse_data_file_directories:
+  - "{{ dse_home }}/data"
+
+# Install options
 dse_install_opscenter: False
 dse_install_dse: False
+
+# Network settings
 dse_listen_address: False
 dse_listen_interface: False
-dse_num_tokens: 128
-dse_opscenter_ip: False
 dse_rpc_address: False
 dse_rpc_interface: False
+
+# Snitch options
+dse_endpoint_snitch: com.datastax.bdp.snitch.DseSimpleSnitch
+
+# Datastax agent configuration
+dse_agent_memory: 128M
+dse_opscenter_ip: False

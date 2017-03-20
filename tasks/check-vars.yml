@@ -5,7 +5,7 @@
   with_items:
     - dse_repository_login
     - dse_repository_password
-    - dse_group
+    - dse_seed_group
 
 - name: Checks that dse_listen_address & dse_listen_interface are not both defined
   fail:
