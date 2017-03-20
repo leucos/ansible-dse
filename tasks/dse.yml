@@ -18,6 +18,7 @@
   template:
     src: cassandra.yaml.j2
     dest: /etc/dse/cassandra/cassandra.yaml
+    backup: yes
     owner: cassandra
     group: cassandra
     mode: 0644
@@ -29,6 +30,7 @@
   template:
     src: cassandra-env.sh.j2
     dest: /etc/dse/cassandra/cassandra-env.sh
+    backup: yes
     owner: cassandra
     group: cassandra
     mode: 0644
@@ -50,6 +52,7 @@
     dest: /var/lib/datastax-agent/conf/address.yaml
     owner: cassandra
     group: cassandra
+    backup: yes
     mode: 0644
   when: dse_opscenter_ip is defined and dse_opscenter_ip != False
   tags: ["config","dse-agents:config"]
@@ -60,6 +63,7 @@
   template:
     src: datastax-agent-env.sh.j2
     dest: /etc/datastax-agent/datastax-agent-env.sh
+    backup: yes
     owner: root
     group: root
     mode: 0644
