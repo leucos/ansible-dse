@@ -38,6 +38,14 @@
   notify:
     - Restart DSE
 
+- name: Creates DSE home directory
+  file:
+    path: "{{ dse_home }}"
+    state: directory
+    owner: cassandra
+    group: cassandra
+    mode: 0755
+
 - name: Installs agent
   apt:
     name: datastax-agent
