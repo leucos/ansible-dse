@@ -356,7 +356,7 @@ commitlog_segment_size_in_mb: 32
 {%    endfor %}
 {% else %}
 {%-   for node in groups[dse_seed_group] %}
-{%-     set _ = __dse_cluster_seeds.append(dse_listen_address) -%}
+{%-     set _ = __dse_cluster_seeds.append(hostvars[node]['dse_listen_address']) -%}
 {%    endfor %}
 {% endif %}
 
